@@ -1,0 +1,117 @@
+    body {
+      background-color: rgb(25, 25, 25);
+      color: white;
+      font-family: Arial;
+    }
+
+    .heading {
+      font-size: 30px;
+      font-weight: bold;
+    }
+
+    .pick {
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .move-emoji {
+      height: 50px;
+    }
+
+    .move-button {
+      background-color: transparent;
+      border: 3px solid white;
+      width: 120px;
+      height: 120px;
+      border-radius: 60px;
+      margin-right: 10px;
+      cursor: pointer;
+    }
+
+    .result {
+      font-size: 25px;
+      font-weight: bold;
+      margin-top: 50px;
+    }
+
+    .score {
+      margin-top: 70px;
+    }
+
+    .reset-button {
+      background-color: white;
+      border: none;
+      font-size: 15px;
+      padding: 10px 10px;
+      cursor: pointer;
+    }
+
+    .move-button {
+      transition: transform 220ms ease, box-shadow 220ms ease;
+      will-change: transform;
+    }
+
+    .move-button:hover {
+      transform: translateY(-8px) rotate(-3deg);
+      box-shadow: 0 10px 22px rgba(255, 255, 255, 0.06), 0 4px 10px rgba(0, 0, 0, 0.5);
+    }
+
+    .move-button:active {
+      transform: translateY(-2px) scale(0.98) rotate(-1deg);
+      transition-duration: 120ms;
+    }
+
+    .move-button:focus {
+      outline: none;
+      box-shadow: 0 0 0 6px rgba(255, 255, 255, 0.04), 0 8px 20px rgba(0, 0, 0, 0.6);
+    }
+
+    @keyframes rps-float {
+      0% {
+        transform: translateY(0) rotate(0deg);
+      }
+
+      50% {
+        transform: translateY(-6px) rotate(2deg);
+      }
+
+      100% {
+        transform: translateY(0) rotate(0deg);
+      }
+    }
+
+    .move-emoji {
+      animation: rps-float 3.2s ease-in-out infinite;
+      backface-visibility: hidden;
+      /* smoother */
+      transform-origin: 50% 50%;
+      transition: transform 180ms ease;
+    }
+
+    @keyframes rps-pop {
+      0% {
+        transform: scale(1) rotate(0deg);
+      }
+
+      50% {
+        transform: scale(1.18) rotate(-6deg);
+      }
+
+      100% {
+        transform: scale(1) rotate(0deg);
+      }
+    }
+
+    .move-button:active .move-emoji,
+    .move-button:focus .move-emoji {
+      animation: rps-pop 220ms ease forwards;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+
+      .move-emoji,
+      .move-button {
+        animation: none !important;
+        transition: none !important;
+      }
+    }
